@@ -1,0 +1,6 @@
+<div ng-controller="navController as vm">
+<h2>Playlists</h2>
+<div ng-repeat="playlist in vm.playlists">
+	<a ng-href="./#/playlist/{{playlist.id}}">{{playlist.name}}</a>
+</div>
+</div>

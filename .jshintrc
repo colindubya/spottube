@@ -1,0 +1,24 @@
+{
+  "undef": true,
+  "unused": true,
+  "predef": [
+    "angular",
+    "$",
+    "_",
+    "moment",
+    "PDFJS",
+
+    /*MOCHA*/
+    "require",
+    "describe",
+    "it",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "expect",
+    "window",
+    "specHelper",
+    "module"
+  ]
+}
