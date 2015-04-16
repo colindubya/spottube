@@ -1,12 +1,13 @@
+<h4><a href="/#/home"> <i class="fa fa-chevron-left"></i> Back</a></h4>
+<h4>{{vm.playlist.name}}</h4>
 <div class="container">
-	<div class="row">
-<div class="col-sm-3 col-xs-6 song" ng-repeat="item in vm.playlist.tracks.items">
-	<span class="artist">{{item.artist.name}}</span>
-	<span class="track">{{item.track.name}}</span>
-	<img ng-src="{{item.track.album.images[0].url}}" src=""/>
-	<a href="{{item.track.album.external_urls.spotify}}" target="_blank" ><i class="fa fa-spotify"></i> Listen on Spotify</a>
-	<a ng-show="item.video.id" href="{{'https://www.youtube.com/watch?v=' + item.video.id}}" target="_blank"><i class="fa fa-youtube-play"></i> Watch on Youtube</a>
+    <div class="row">
+        <div ng-repeat="item in vm.playlist.tracks.items" class="song col-xs-4" cw-fade>
+            <span class="artist">{{item.track.artists[0].name}}</span>
+            <span class="track">{{item.track.name}}</span>
+            <img ng-src="{{item.track.album.images[0].url}}" />
+            <a href="{{item.track.album.external_urls.spotify}}" target="_blank"><i class="fa fa-spotify"></i> Listen on Spotify</a>
+            <a ng-show="item.video.id" href="{{'https://www.youtube.com/watch?v=' + item.video.id}}" target="_blank"><i class="fa fa-youtube-play"></i> Watch on youtube</a>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-

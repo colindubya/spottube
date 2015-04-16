@@ -4,10 +4,6 @@
 (function(){
 	angular.module('app', [
 		'ngRoute',
-		'ngCookies',
-		'ngAria',
-		'ngMaterial',
-		'ngAnimate',
-		'ngSanitize'
+        'ngSanitize'
 	]);
 })();

@@ -4,14 +4,14 @@
 (function(){
 	angular.module('app').controller('playlistController', playlistController);
 
-	playlistController.$inject = ['user', 'spotify', 'youtube', '$routeParams'];
-	function playlistController(user, spotify, youtube, $routeParams){
+	playlistController.$inject = ['spotify', 'youtube', '$routeParams'];
+	function playlistController(spotify, youtube, $routeParams){
 		var vm = this;
 		vm.title = 'playlist';
-		vm.playlistId = $routeParams.playlistId;
+        var playlistId = $routeParams.playlistId;
+        var ownerId = $routeParams.ownerId;
 
-		if (user.getUserId() > 0){
-			spotify.getPlaylist(vm.playlistId).then(function(data){
+		spotify.getPlaylist(ownerId, playlistId).then(function(data){
 				vm.playlist = data;
 
 				angular.forEach(vm.playlist.tracks.items, function(item){
@@ -21,7 +21,7 @@
 				});
 
 			});
-		}
+
 	}
 
 })();

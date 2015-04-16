@@ -3,36 +3,19 @@
  */
 (function(){
 
-	angular.module('app').controller('homeController', homeController);
+    angular.module('app').controller('homeController', homeController);
 
-	homeController.$inject = ['$location', 'user', '$rootScope'];
-	function homeController($location, user, $rootScope){
-		var vm = this;
-		vm.login = login;
-		vm.user = user;
-		if ($location.absUrl().indexOf('/access_token') > 0){
-			var url = $location.absUrl().replace('access_token', '?access_token');
-			window.location = url;
-		}
+    homeController.$inject = ['spotify'];
+    function homeController(spotify){
+        var vm = this;
+        vm.user = spotify.user;
+        vm.playlists = [];
+        vm.logout = spotify.logout;
 
-		if ($location.search().access_token){
-			user.setToken($location.search().access_token);
-			vm.login();
-		}
+        spotify.getPlaylists().then(function(data){
+           vm.playlists = data;
+        });
 
-		function login() {
-			user.getUserInfo().then(function () {
-				$rootScope.$broadcast('login');
-			});
-		}
-	}
+    }
 
 })();
-
-
-function getParameterByName(name) {
-	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-		results = regex.exec(location.search);
-	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}

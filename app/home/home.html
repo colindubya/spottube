@@ -1,4 +1,13 @@
-home
+<h4><div ng-click="vm.logout()"> <i class="fa fa-sign-out"></i> Logout</div></h4>
+<h4>Welcome {{vm.user.name}}</h4>
 
-<div ng-click="vm.login()">Login</div>
-<div>{{vm.user.name}}</div>
+<div class="container">
+    <div class="row">
+        <div ng-repeat="playlist in vm.playlists" class="playlist col-xs-4" cw-fade>
+            <a href="/#/playlist/{{playlist.owner.id}}/{{playlist.id}}">
+            <img ng-src="{{playlist.images[0].url}}" />
+            <div class="playlist-name">{{playlist.name}}</div>
+            </a>
+        </div>
+    </div>
+</div>

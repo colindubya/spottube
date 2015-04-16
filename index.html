@@ -3,77 +3,35 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title></title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
-	<link rel="stylesheet" href="styles/app.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="styles/app.css" />
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<div class="col-xs-3 menu" ng-include="'./app/nav/nav.html'"></div>
-		<div class="col-xs-9" ng-view></div>
+		<div class="col-xs-12" ng-view></div>
 	</div>
 </div>
 
 
 
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-aria/angular-aria.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-material/angular-material.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 
 <script src="app/app.module.js"></script>
 <script src="app/app.config.js"></script>
-<script src="app/nav/nav.js"></script>
 <script src="app/playlist/playlist.js"></script>
 <script src="app/home/home.js"></script>
+<script src="app/login/login.js"></script>
+<script src="app/directives/fade.js"></script>
+<script src="app/directives/spotifyPlay.js"></script>
 
 <script src="app/services/youtube.service.js"></script>
 <script src="app/services/spotify.service.js"></script>
-<script src="app/services/user.service.js"></script>
-
-<script>
-
-	$(document).ready(function () {
-		$('.song').on('mouseover', function () {
-			$(this).find('.artist').addClass('hover');
-			$(this).find('.track').addClass('hover');
-		});
-		$('.song').on('mouseout', function () {
-			$(this).find('.artist').removeClass('hover');
-			$(this).find('.track').removeClass('hover');
-		});
-
-		$(window).scroll(function () {
-			$.each($('.song'), function () {
-				if (isVisible($(this))) {
-					$(this).removeClass('partial');
-				}
-				else {
-					$(this).addClass('partial');
-				}
-			})
-
-			$('.menu').height($('html').height());
-		});
-
-	});
-
-
-	function isVisible(element) {
-		var windowBottom = $(window).scrollTop() + $(window).height();
-		var elementBottom = $(element).offset().top + $(element).height();
-
-		return (((elementBottom - ($(element).height() * .5)) <= windowBottom) && ($(element).offset().top >= $(window).scrollTop()));
-	}
-
-</script>
 
 </body>
 </html>

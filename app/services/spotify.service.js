@@ -7,58 +7,60 @@
 
 	angular.module('app').factory('spotify', spotify);
 
-	spotify.$inject = ['$http', 'user', '$cookies', '$location', 'spotifykey'];
-	function spotify($http, user, $cookies, $location, spotifykey) {
-
+	spotify.$inject = ['$http', '$window', '$location'];
+	function spotify($http, $window, $location) {
 		var service = {
 			getPlaylists: getPlaylists,
 			getPlaylist: getPlaylist,
-			getSong:getSong
+			getSong:getSong,
+			login:login,
+            logout:logout,
+            setToken:setToken,
+			user:{}
 		};
+
+        if ($window.localStorage.getItem('spotify')){
+            service.user = JSON.parse($window.localStorage.getItem('spotify'));
+        }
 
 		return service;
 
+        function login(){
+            return $http.get('https://api.spotify.com/v1/me').then(function (response) {
+                service.user.id = response.data.id;
+                service.user.name = response.data.display_name;
+                $window.localStorage.setItem('spotify', JSON.stringify(service.user));
 
-		function getSong(name) {
-			if (checkIfAuthorized()) {
-				$http.defaults.headers.common.Authorization = 'Bearer ' + $cookies.get('authToken');
-				return $http.get('spotify' + name).then(function (response) {
-					return response.data;
-				});
-			}
+            });
+        }
+
+        function logout(){
+                $window.localStorage.removeItem('authToken');
+                $window.localStorage.removeItem('spotify');
+                service.user = {};
+                $location.path('');
+        }
+
+        function setToken(token){
+            $window.localStorage.setItem('authToken', token);
+        }
+
+        function getSong(name) {
+            return $http.get('spotify' + name).then(function (response) {
+                return response.data;
+            });
 		}
 
 		function getPlaylists() {
-			if (checkIfAuthorized()) {
-				$http.defaults.headers.common.Authorization = 'Bearer ' + $cookies.get('authToken');
-				return $http.get('https://api.spotify.com/v1/users/' + user.getUserId() + '/playlists').then(function (response) {
-					return response.data;
-				});
-			}
+            return $http.get('https://api.spotify.com/v1/users/' + service.user.id + '/playlists').then(function (response) {
+                return response.data.items;
+            });
 		}
 
-		function getPlaylist(id) {
-			if(checkIfAuthorized()) {
-				$http.defaults.headers.common.Authorization = 'Bearer ' + $cookies.get('authToken');
-				return $http.get('https://api.spotify.com/v1/users/' + user.getUserId() + '/playlists/' + id).then(function (response) {
-					console.log(response.data);
-					return response.data;
-				}, function(error){
-					return $http.get('https://api.spotify.com/v1/users/spotify/playlists/' + id).then(function (response) {
-						console.log(response.data);
-						return response.data;
-					});
-				});
-			}
-		}
-
-		function checkIfAuthorized(){
-			if ($cookies.get('authToken')){
-				return true;
-			}
-			var callback = encodeURIComponent('http://localhost:7203/#/');
-			window.location ='https://accounts.spotify.com/en/authorize?client_id=cf218c95b88e409fbdd30b815632bd14&response_type=token&redirect_uri=' + callback + '&scope=user-read-private%20playlist-read-private';
-			return false;
+		function getPlaylist(ownerId, playlistId) {
+            return $http.get('https://api.spotify.com/v1/users/' + ownerId + '/playlists/' + playlistId).then(function (response) {
+                return response.data;
+            });
 		}
 	}
 })();

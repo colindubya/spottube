@@ -17,7 +17,6 @@
 
 
 		function getVideo(name){
-			$http.defaults.headers.common.Authorization = undefined;
 			return $http.get('https://content.googleapis.com/youtube/v3/search?safeSearch=strict&part=snippet&q=' + name + '&key=AIzaSyAjfOZ77iVJbiIhcegRuFDNkug-sNA3izo').then(function(response){
 				var video = {};
 				angular.forEach(response.data.items, function(item){
@@ -27,7 +26,6 @@
 						video.thumbnail = item.snippet.thumbnails.default.url;
 					}
 				});
-
 				return video;
 			});
 		}
