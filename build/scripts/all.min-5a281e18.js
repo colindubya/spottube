@@ -1,0 +1,2 @@
+!function(){angular.module("app",["app.layout"])}(),function(){angular.module("app.layout",[])}(),function(){function l(){}angular.module("app.layout").controller("ShellController",l),l.$inject=[]}();
+//# sourceMappingURL=all.min.js.map
