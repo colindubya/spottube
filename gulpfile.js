@@ -311,7 +311,7 @@ function serve(args) {
 
 	return plug.nodemon(options)
 		.on('start', function() {
-			startBrowserSync();
+			//startBrowserSync();
 		})
 		//.on('change', tasks)
 		.on('restart', function() {

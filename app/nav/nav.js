@@ -6,16 +6,18 @@
 	angular.module('app')
 		.controller('navController', navController);
 
-	navController.$inject = ['spotify', 'user', '$scope'];
-	function navController(spotify, user, $scope){
+	navController.$inject = ['spotify'];
+	function navController(spotify){
 		var vm = this;
 		vm.title = 'side nav';
+        vm.playlists = [];
+        vm.logout = spotify.logout;
 
-		$scope.$on('login', function(){
-			spotify.getPlaylists().then(function(data){
-				vm.playlists = data.items;
-			});
-		});
+        if (spotify.user.id) {
+            spotify.getPlaylists().then(function (data) {
+                vm.playlists = data;
+            });
+        }
 
 	}
 

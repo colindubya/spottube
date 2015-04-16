@@ -2,4 +2,5 @@
 
 <div ng-repeat="item in vm.playlist.tracks.items">
 {{item.track.name}}
+    {{item.video | json}}
 </div>

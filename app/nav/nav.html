@@ -1,6 +1,7 @@
 <div ng-controller="navController as vm">
+    <button class="btn"ng-click="vm.logout()">logout</button>
 <h2>Playlists</h2>
 <div ng-repeat="playlist in vm.playlists">
-	<a ng-href="./#/playlist/{{playlist.id}}">{{playlist.name}}</a>
+    <a ng-href="/#/playlist/{{playlist.owner.id }}/{{playlist.id}}">{{playlist.name}}</a>
 </div>
 </div>

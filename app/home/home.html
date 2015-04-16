@@ -1,4 +1,6 @@
 home
 
-<div ng-click="vm.login()">Login</div>
-<div>{{vm.user.name}}</div>
+<div ng-repeat="playlist in vm.playlists">
+    {{playlist.name}}
+    <a ng-href="/#/playlist/{{playlist.owner.id }}/{{playlist.id}}">Open</a>
+</div>
