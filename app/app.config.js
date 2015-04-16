@@ -6,7 +6,6 @@
 	config.$inject = ['$routeProvider', '$httpProvider'];
 	function config($routeProvider, $httpProvider) {
 		$routeProvider
-
             .when('/home', {
                 templateUrl: './app/home/home.html',
                 controller: 'homeController',
@@ -26,7 +25,7 @@
                 templateUrl: './app/login/login.html',
                 controller: 'loginController',
                 controllerAs: 'vm'
-            });
+            }).otherwise('/');
 
         spotifyInterceptor.$inject = ['$window', '$injector'];
         function spotifyInterceptor($window, $injector){

@@ -10,6 +10,7 @@
         var vm = this;
         vm.user = spotify.user;
         vm.playlists = [];
+        vm.logout = spotify.logout;
 
         spotify.getPlaylists().then(function(data){
            vm.playlists = data;

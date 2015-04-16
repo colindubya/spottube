@@ -38,7 +38,7 @@
                 $window.localStorage.removeItem('authToken');
                 $window.localStorage.removeItem('spotify');
                 service.user = {};
-                $location.url('/');
+                $location.path('');
         }
 
         function setToken(token){
