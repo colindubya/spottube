@@ -7,22 +7,22 @@
 	function config($routeProvider, $httpProvider) {
 		$routeProvider
             .when('/home', {
-                templateUrl: './app/home/home.html',
+                templateUrl: 'app/home/home.html',
                 controller: 'homeController',
                 controllerAs: 'vm'
             })
             .when('/playlist/:ownerId/:playlistId', {
-                templateUrl: './app/playlist/playlist.html',
+                templateUrl: 'app/playlist/playlist.html',
                 controller: 'playlistController',
                 controllerAs: 'vm'
 		    })
             .when('/', {
-                templateUrl: './app/login/login.html',
+                templateUrl: 'app/login/login.html',
                 controller: 'loginController',
                 controllerAs: 'vm'
             })
             .when('/:access_token', {
-                templateUrl: './app/login/login.html',
+                templateUrl: 'app/login/login.html',
                 controller: 'loginController',
                 controllerAs: 'vm'
             }).otherwise('/');

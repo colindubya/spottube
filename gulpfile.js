@@ -102,7 +102,7 @@ gulp.task('templatecache', function() {
 		}))
 		// .pipe(plug.bytediff.stop(bytediffFormatter))
 		.pipe(plug.angularTemplatecache('templates.js', {
-			module: 'app.core',
+			module: 'app',
 			standalone: false,
 			root: 'app/'
 		}))
