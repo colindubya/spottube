@@ -22,7 +22,7 @@
 		}
 
 		function login() {
-            window.location = 'https://accounts.spotify.com/en/authorize?client_id=cf218c95b88e409fbdd30b815632bd14&response_type=token&redirect_uri=http://localhost:7203/#/&scope=user-read-private%20playlist-read-private';
+            window.location = 'https://accounts.spotify.com/en/authorize?client_id=cf218c95b88e409fbdd30b815632bd14&response_type=token&redirect_uri=http://colindubya.github.io/spottube/#/&scope=user-read-private%20playlist-read-private';
         }
 	}
 

@@ -2,7 +2,7 @@
 <h4>{{vm.playlist.name}}</h4>
 <div class="container">
     <div class="row">
-        <div ng-repeat="item in vm.playlist.tracks.items" class="song col-xs-4" cw-fade>
+        <div ng-repeat="item in vm.playlist.tracks.items" class="song col-xs-3" cw-fade>
             <span class="artist">{{item.track.artists[0].name}}</span>
             <span class="track">{{item.track.name}}</span>
             <img ng-src="{{item.track.album.images[0].url}}" />

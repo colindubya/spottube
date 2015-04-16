@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="row">
-        <div ng-repeat="playlist in vm.playlists" class="playlist col-xs-4" cw-fade>
+        <div ng-repeat="playlist in vm.playlists" class="playlist col-xs-3" cw-fade>
             <a href="/#/playlist/{{playlist.owner.id}}/{{playlist.id}}">
             <img ng-src="{{playlist.images[0].url}}" />
             <div class="playlist-name">{{playlist.name}}</div>
