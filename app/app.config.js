@@ -4,8 +4,8 @@
 	app.value('spotifykey', 'cf218c95b88e409fbdd30b815632bd14');
 
 	app.config(config);
-	config.$inject = ['$routeProvider'];
-	function config($routeProvider) {
+	config.$inject = ['$routeProvider', '$sceDelegateProvider'];
+	function config($routeProvider, $sceDelegateProvider) {
 		$routeProvider.when('/', {
 			templateUrl: './app/home/home.html',
 			controller: 'homeController',
@@ -19,6 +19,8 @@
 			controller: 'playlistController',
 			controllerAs: 'vm'
 		});
+
+		$sceDelegateProvider.resourceUrlWhitelist(['*spotify*']);
 	}
 
 

@@ -1,5 +1,12 @@
-<h2>playlist</h2>
-
-<div ng-repeat="item in vm.playlist.tracks.items">
-{{item.track.name}}
+<div class="container">
+	<div class="row">
+<div class="col-sm-3 col-xs-6 song" ng-repeat="item in vm.playlist.tracks.items">
+	<span class="artist">{{item.artist.name}}</span>
+	<span class="track">{{item.track.name}}</span>
+	<img ng-src="{{item.track.album.images[0].url}}" src=""/>
+	<a href="{{item.track.album.external_urls.spotify}}" target="_blank" ><i class="fa fa-spotify"></i> Listen on Spotify</a>
+	<a ng-show="item.video.id" href="{{'https://www.youtube.com/watch?v=' + item.video.id}}" target="_blank"><i class="fa fa-youtube-play"></i> Watch on Youtube</a>
 </div>
+</div>
+</div>
+

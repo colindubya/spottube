@@ -4,6 +4,10 @@
 (function(){
 	angular.module('app', [
 		'ngRoute',
-		'ngCookies'
+		'ngCookies',
+		'ngAria',
+		'ngMaterial',
+		'ngAnimate',
+		'ngSanitize'
 	]);
 })();
